@@ -1,0 +1,9 @@
+{
+  "name": "account-mgr",
+  "description": "Front-end for peach",
+	"version": "0.0.1",
+  "dependencies": {
+    "express": "*.*",
+		"swig": "*.*"
+  }
+}

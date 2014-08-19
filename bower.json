@@ -1,0 +1,9 @@
+{
+  "name": "account-mgr",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "*.*",
+		"bootstrap": "*.*",
+		"ember": "*.*"
+  }
+}
