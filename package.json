@@ -6,6 +6,7 @@
     "express": "*.*",
 		"swig": "*.*",
 		"mongoose": "*.*",
-		"body-parser": "*.*"
+		"body-parser": "*.*",
+		"yahoo-finance": "*.*"
   }
 }

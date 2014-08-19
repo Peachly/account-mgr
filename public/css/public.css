@@ -860,3 +860,10 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: #fed136;
 }
+
+#account-navbar {
+	background-color: #FF9966;
+}
+#account-navbar a.navbar-brand {
+	color: white;
+}

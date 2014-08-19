@@ -14,7 +14,10 @@
 	<td>{{a.name}}</td>
 	<td>{{a.email}}</td>
 	<td>{{a.password}}</td>
-	<td><a href='/admin/delete_account?account_id={{a.id}}'>Delete</a></td>
+	<td>
+		<a href='/{{a.id}}' target='new'>Open <span class='glyphicon glyphicon-new-window'></span></a> &nbsp;&nbsp; 
+		<a href='/admin/delete_account?accountId={{a.id}}'>Delete</a>
+	</td>
 	</tr>
 {% endfor %}
 </table>
