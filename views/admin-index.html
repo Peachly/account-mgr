@@ -1,0 +1,42 @@
+{% extends 'admin-wrap.html' %}
+
+{% block content %}
+
+<div class='container'>
+<div class='row'>
+
+<div class='col-md-8'>
+<h1>Accounts</h1>
+<table class='table table-striped'>
+<tr><th>Name</th><th>Email</th><th>Password</th><th></th></tr>
+{% for a in accounts %}
+	<tr>
+	<td>{{a.name}}</td>
+	<td>{{a.email}}</td>
+	<td>{{a.password}}</td>
+	<td><a href='/admin/delete_account?account_id={{a.id}}'>Delete</a></td>
+	</tr>
+{% endfor %}
+</table>
+</div>
+
+<div class='col-md-4'>
+<h1>Add Account</h1>
+<form method='post' action='admin/add_account'>
+	<div class="form-group">
+    <input type="text" class="form-control" name="name" placeholder="Name">
+  </div>
+	<div class="form-group">
+    <input type="email" class="form-control" name="email" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" name="password" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+
+</div>
+</div>
+
+{% endblock %}
