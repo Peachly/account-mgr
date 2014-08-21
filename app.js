@@ -72,6 +72,6 @@ app.get('/:accountId', function(req, res){
 	});
 });
 
-var server = app.listen(80, 'builder.websites.ca', function() {
+var server = app.listen(3000, 'localhost', function() {
 	console.log('Listening, %s:%d', server.address().address, server.address().port);
 });

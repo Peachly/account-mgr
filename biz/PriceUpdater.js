@@ -13,6 +13,7 @@ PriceUpdater.prototype.update = function(funds) {
 	  symbols: tickers,
 	  fields: ['s', 'n', 'd1', 'l1', 'y', 'r'],
 	}, function (err, data, url, symbol) {
+		console.dir(data);
 		for (i in funds) {
 			var ticker = funds[i].ticker;
 			if (data[ticker].lastTradeDate == 'N/A') {
