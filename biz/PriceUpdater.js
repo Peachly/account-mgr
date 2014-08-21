@@ -5,27 +5,29 @@ function PriceUpdater(financialDataAdapter) {
 }
 
 PriceUpdater.prototype.update = function(funds) {
-	console.dir(funds);
-
 	var tickers = funds.map(function(f) { return f.ticker });
-
+	console.log('REQUESTING:');
+	console.dir(tickers);
 	this.financialDataAdapter.snapshot({
 	  symbols: tickers,
 	  fields: ['s', 'n', 'd1', 'l1', 'y', 'r'],
 	}, function (err, data, url, symbol) {
+		console.log('FUNDS DATA:');
 		console.dir(data);
+		console.log('ERRORS:');
+		console.dir(err);
 		for (i in funds) {
 			var ticker = funds[i].ticker;
-			if (data[ticker].lastTradeDate == 'N/A') {
-				funds[i].remove();
-			} else {
-				funds[i].latestPrice = data[ticker].lastTradePriceOnly;
-				funds[i].latestUpdate = Date.now();
-				funds[i].name = data[ticker].name;
-				console.log("\nUPDATE:");
-				console.dir(funds[i]);
-				funds[i].save();
+			if (!(ticker in data)) {
+				continue;
 			}
+			if (data[ticker].lastTradeDate == 'N/A') {
+				continue;
+			}
+			funds[i].latestPrice = data[ticker].lastTradePriceOnly;
+			funds[i].latestUpdate = Date.now();
+			funds[i].name = data[ticker].name;
+			funds[i].save();
 		}
 	});
 

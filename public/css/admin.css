@@ -8,3 +8,8 @@
 #nav a {
 	color: lightblue;
 }
+
+.table tbody>tr>td.vert-align
+{
+    vertical-align: middle;
+}

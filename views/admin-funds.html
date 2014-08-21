@@ -7,20 +7,23 @@
 
 <div class='col-md-8'>
 <h1>Funds</h1>
+<form method="post" action="/admin/save_funds">
 <table class='table table-striped'>
 <tr><th>Name</th><th>Ticker</th><th>Price</th><th>Updated</th><th></th></tr>
 {% for f in funds %}
 	<tr>
-	<td>{{f.name}}</td>
-	<td>{{f.ticker}}</td>
-	<td>{{f.latestPrice}}</td>
-	<td>{{f.latestUpdate.toString()}}</td>
-	<td>
-		<!--actionshere-->
+	<td class="vert-align">{{f.ticker}}</td>
+	<td class="vert-align"><input type='text' name="name_{{f.id}}" value='{{f.name}}' class='form-control'></td>
+	<td class="vert-align col-xs-2"><input name="price_{{f.id}}" type='text' value='{{f.latestPrice}}' class='form-control'></td>
+	<td class="vert-align">{{f.latestUpdate.toString()}}</td>
+	<td class="vert-align">
+		<a href='/admin/delete_fund/{{f.id}}'>Delete</a>
 	</td>
 	</tr>
 {% endfor %}
 </table>
+<input class="btn btn-primary" type="submit" value="Save Funds">
+</form>
 </div>
 
 <div class='col-md-4'>

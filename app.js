@@ -53,6 +53,25 @@ app.post('/admin/add_fund', function(req, res){
 	f.save();
 	res.redirect('/admin/funds');
 });
+app.get('/admin/delete_fund/:fundId', function(req, res){
+	Fund.findOne({_id:req.params.fundId}).exec(function(err, f) {
+		f.remove();
+		res.redirect('/admin/funds');		
+	});
+});
+app.post('/admin/save_funds', function(req, res){
+	Fund.find().exec(function(err, funds) {
+		for (i in funds) {
+			var f = funds[i];
+			var name = req.body['name_'+f.id];
+			var price = req.body['price_'+f.id];
+			f.name = name;
+			f.latestPrice = price;
+			f.save();
+		}
+		res.redirect('/admin/funds');
+	});
+});
 app.get('/admin/update_prices', function(req, res){
 	var PriceUpdater = require("./biz/PriceUpdater");
 	var FinancialDataAdapter = require("./biz/FinancialDataAdapter");
